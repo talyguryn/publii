@@ -3,29 +3,100 @@
     <title>talyguryn.github.io</title>
     <link href="https://talyguryn.github.io/publii/feed.xml" rel="self" />
     <link href="https://talyguryn.github.io/publii" />
-    <updated>2023-10-24T12:33:40+03:00</updated>
+    <updated>2023-10-24T12:43:50+03:00</updated>
     <author>
         <name>Taly Guryn</name>
     </author>
     <id>https://talyguryn.github.io/publii</id>
 
     <entry>
-        <title>asdfasdf</title>
+        <title>Setup Outline VPN on Vultr</title>
         <author>
             <name>Taly Guryn</name>
         </author>
         <link href="https://talyguryn.github.io/publii/asdfasdf.html"/>
         <id>https://talyguryn.github.io/publii/asdfasdf.html</id>
 
-        <updated>2023-10-24T12:33:40+03:00</updated>
+        <updated>2023-10-24T12:43:50+03:00</updated>
             <summary>
                 <![CDATA[
-                    asdfasdfasdf
+                    Outline is the simplest way to run and manage your own server. Single command setting up on the server and the rest managing in going on Outline Manager GUI. Then you can create any number of access keys and use them on computers, phones and tablets&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                <p>asdfasdfasdf</p>
+                <p><a href="http://getoutline.org/" target="_blank" rel="noreferrer noopener">Outline</a> is the simplest way to run and manage your own server.</p>
+<p>Single command setting up on the server and the rest managing in going on Outline Manager GUI. Then you can create any number of access keys and use them on computers, phones and tablets — Outline app is available almost on each platform.</p>
+<p>Yes, it is the easy, but the last time I spent a lot of time by missing one thing — VPS internal firewall.</p>
+<h2>Get the VPS</h2>
+<p>Let's imagine that you know how to create an account, choose the VPS configuration and OS. I believe you know what to do. Just get the server. You can use <a href="https://www.vultr.com/?ref=9086628-8H" target="_blank" rel="noreferrer noopener">Vultr</a> (ref link to say me thanks).</p>
+<p>I have got the the nearest place with the cheap metal, no backups or etc. Ubuntu 20.04.4 on board. 6$ per month for the moment.</p>
+<p>Let's skip the part where you trying to connect to your server.</p>
+<h2>Outline installing</h2>
+<p>Well, Outline Manager says that you need to run just a single command on the server. Okay, go:</p>
+<pre class="language-bash"><code>sudo bash -c "$(wget -qO- https://raw.githubusercontent.com/Jigsaw-Code/outline-server/master/src/server_manager/install_scripts/install_server.sh)"</code></pre>
+<p>You will be asked once to allow installing Docker.</p>
+<pre class="language-bash"><code>&gt; Verifying that Docker is installed .......... NOT INSTALLED
+&gt; Would you like to install Docker? This will run 'curl https://get.docker.com/ | sh'. [Y/n] 
+&gt; Installing Docker ........................... OK
+&gt; Verifying Docker installation OK
+............... &gt; Verifying that Docker daemon is running ..... OK
+&gt; Setting PUBLIC_HOSTNAME to external IP ...... OK
+&gt; Creating persistent state dir ............... OK
+&gt; Generating secret key ....................... OK
+&gt; Generating TLS certificate .................. OK
+&gt; Generating SHA-256 certificate fingerprint .. OK
+&gt; Writing config .............................. OK
+&gt; Starting Shadowbox .......................... OK
+&gt; Starting Watchtower ......................... OK
+&gt; Waiting for Outline server to be healthy .... OK
+&gt; Creating first user ......................... OK
+&gt; Adding API URL to config .................... OK
+&gt; Checking host firewall ...................... OK
+
+CONGRATULATIONS! Your Outline server is up and running.
+
+To manage your Outline server, please copy the following line (including curly
+brackets) into Step 2 of the Outline Manager interface:
+
+{"apiUrl":"https://111.11.111.111:1111/secretstring","certSha256":"anotheronelongsecret...string"}
+
+If you have connection problems, it may be that your router or cloud provider
+blocks inbound connections, even though your machine seems to allow them.
+
+Make sure to open the following ports on your firewall, router or cloud provider:
+- Management port 5555, for TCP
+- Access key port 22222, for TCP and UDP</code></pre>
+<p>You will be asked to copy JSON key to set up the server in management GUI.</p>
+<p>But you also need to check these two ports. For example: 5555 and 22222 (management and access). And you can ignore this check until you get this error:</p>
+<p><img loading="lazy" src="https://static.codex.so/upload/redactor_images/o_f6eb9e4d562c4b1fc343b2648d3aa92d.jpg" alt="" data-is-external-image="true"></p>
+<h2>Unable to connect</h2>
+<p>Don't worry, I've already done enough.</p>
+<p>This way you need to check firewall rules. If your provider does not block any ports and if company who cares your VPS also gives you full flexibility then you need to check internal VPS's firewall rules. And there is a solution.</p>
+<p>Utility <code class="inline-code">ufw</code> — program for managing a netfilter firewall — should help you.</p>
+<p>Mine status was:</p>
+<pre class="language-bash"><code>root@vultr:~# ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22                         ALLOW       Anywhere                  
+22 (v6)                    ALLOW       Anywhere (v6)    </code></pre>
+<p>These lines mean that only 22 post is available to get connections.</p>
+<p>Of course it was only for the security purposes by default (at least on Vultr). Many of your ports are being 'filtered'. This indicated that a firewall within your OS is blocking these ports. </p>
+<p>Then we need to expose two ports from the end of installing. Do you remember them?</p>
+<p>Run <code class="inline-code">ufw allow </code> for each port and check the result.</p>
+<pre class="language-bash"><code>root@vultr:~# ufw allow 5555
+Rule added
+Rule added (v6)
+
+root@vultr:~# ufw allow 22222
+Rule added
+Rule added (v6)</code></pre>
+<div class="article-content js-emoji-included">
+<p>Then your Outline Manager will be able to connect to the server.</p>
+<p>Now you can create keys for the usage.</p>
+</div>
             ]]>
         </content>
     </entry>
