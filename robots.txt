@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://talyguryn.github.io/sitemap.xml

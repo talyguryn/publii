@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+    <title>talyguryn.github.io</title>
+    <link href="https://talyguryn.github.io/feed.xml" rel="self" />
+    <link href="https://talyguryn.github.io" />
+    <updated>2023-10-24T12:33:40+03:00</updated>
+    <author>
+        <name>Taly Guryn</name>
+    </author>
+    <id>https://talyguryn.github.io</id>
+
+    <entry>
+        <title>asdfasdf</title>
+        <author>
+            <name>Taly Guryn</name>
+        </author>
+        <link href="https://talyguryn.github.io/asdfasdf.html"/>
+        <id>https://talyguryn.github.io/asdfasdf.html</id>
+
+        <updated>2023-10-24T12:33:40+03:00</updated>
+            <summary>
+                <![CDATA[
+                    asdfasdfasdf
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>asdfasdfasdf</p>
+            ]]>
+        </content>
+    </entry>
+</feed>

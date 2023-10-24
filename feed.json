@@ -1,0 +1,27 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "talyguryn.github.io",
+    "description": "",
+    "home_page_url": "https://talyguryn.github.io",
+    "feed_url": "https://talyguryn.github.io/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "Taly Guryn"
+    },
+    "items": [
+        {
+            "id": "https://talyguryn.github.io/asdfasdf.html",
+            "url": "https://talyguryn.github.io/asdfasdf.html",
+            "title": "asdfasdf",
+            "summary": "asdfasdfasdf",
+            "content_html": "<p>asdfasdfasdf</p>",
+            "author": {
+                "name": "Taly Guryn"
+            },
+            "tags": [
+            ],
+            "date_published": "2023-10-24T12:33:40+03:00",
+            "date_modified": "2023-10-24T12:33:40+03:00"
+        }
+    ]
+}
