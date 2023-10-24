@@ -2,16 +2,16 @@
     "version": "https://jsonfeed.org/version/1",
     "title": "talyguryn.github.io",
     "description": "",
-    "home_page_url": "https://talyguryn.github.io",
-    "feed_url": "https://talyguryn.github.io/feed.json",
+    "home_page_url": "https://talyguryn.github.io/publii",
+    "feed_url": "https://talyguryn.github.io/publii/feed.json",
     "user_comment": "",
     "author": {
         "name": "Taly Guryn"
     },
     "items": [
         {
-            "id": "https://talyguryn.github.io/asdfasdf.html",
-            "url": "https://talyguryn.github.io/asdfasdf.html",
+            "id": "https://talyguryn.github.io/publii/asdfasdf.html",
+            "url": "https://talyguryn.github.io/publii/asdfasdf.html",
             "title": "asdfasdf",
             "summary": "asdfasdfasdf",
             "content_html": "<p>asdfasdfasdf</p>",
